@@ -1,0 +1,18 @@
+Package: spotifyrecommendations
+Type: Package
+Title: Listen Local Recommendations On Spotify
+Version: 0.1.0
+Author: Daniel Antal
+Maintainer: Daniel Antal <daniel.antal@dataobservatory.eu>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    spotifyr,
+    dplyr,
+    magrittr,
+    purrr,
+    tidyr
+RoxygenNote: 7.1.1
