@@ -1,4 +1,6 @@
 ## code to prepare `DATASET` dataset goes here
+library(tidyverse)
+library(spotifyrecommendations)
 
 sk_artists <- readxl::read_excel(file.path(
   'data-raw', 'potential_sk_artists_3.xlsx'

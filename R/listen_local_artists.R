@@ -9,7 +9,6 @@
 #'   \item{artist_name}{The name of the artist on Spotify}
 #'   \item{national_identity}{assumed national identity of the artist(s)}
 #'   \item{language}{language of recordings}
-#'   ...
 #' }
-#' @source \url{http://www.diamondse.info/}
+#' @source \url{http://listenlocal.info/}
 "listen-local-artists"
