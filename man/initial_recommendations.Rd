@@ -4,10 +4,12 @@
 \alias{initial_recommendations}
 \title{Get Initial Recommendations}
 \usage{
-initial_recommendations(playlist_information, target_ids = slovak_ids)
+initial_recommendations(playlist_information, target_ids = NA_character_)
 }
 \arguments{
 \item{playlist_information}{A list received from get_playlist_information.}
+
+\item{target_ids}{Spotify artists ids from the targeted repertoire.}
 }
 \value{
 A tibble of recommendations.

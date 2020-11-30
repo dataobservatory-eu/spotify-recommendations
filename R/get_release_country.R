@@ -8,6 +8,7 @@
 #' @export
 
 get_release_country <- function ( isrc ) {
+  isrc <- substr(as.character(isrc),1,2)
   dplyr::case_when (
     isrc %in% c("QM", "QZ", "US") ~  "US",
     isrc %in% c("BR", "BX") ~  "BR",

@@ -2,7 +2,9 @@
 % Please edit documentation in R/get_playlist_information.R
 \name{get_playlist_information}
 \alias{get_playlist_information}
-\title{Get Playlist Information}
+\title{Get Playlist Information
+
+ Get unique tracks and unique artists from a playlist in a list.}
 \usage{
 get_playlist_information(playlist_id)
 }
@@ -14,4 +16,6 @@ A list of unique tracks and unique artists from a playlist.
 }
 \description{
 Get Playlist Information
+
+ Get unique tracks and unique artists from a playlist in a list.
 }

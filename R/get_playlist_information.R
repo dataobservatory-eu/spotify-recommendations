@@ -1,7 +1,7 @@
 #' @title Get Playlist Information
-#
-#  Get unique tracks and unique artists from a playlist in a list.
-#
+#'
+#'  Get unique tracks and unique artists from a playlist in a list.
+#'
 #' @param playlist_id A single Spotify playlist id
 #' @importFrom purrr map_df possibly
 #' @importFrom spotifyr get_playlist_audio_features

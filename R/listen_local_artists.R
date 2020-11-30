@@ -11,4 +11,4 @@
 #'   \item{language}{language of recordings}
 #' }
 #' @source \url{http://listenlocal.info/}
-"listen-local-artists"
+"listen_local_artists"
