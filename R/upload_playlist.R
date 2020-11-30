@@ -7,7 +7,7 @@
 #' @param playlist_description New description for the playlist
 #' @importFrom spotifyr get_user_playlists add_tracks_to_playlist
 #' @importFrom dplyr filter
-#' @return A list of unique tracks and unique artists from a playlist.
+#' @return Does not return anything.
 #' @export
 
 upload_playlist <- function (user_id = 'rx4xjay1368opqg2i7nabuo5c',
