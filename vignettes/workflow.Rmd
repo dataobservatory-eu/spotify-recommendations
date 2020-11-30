@@ -25,13 +25,32 @@ library(spotifyrecommendations)
 slovakia_indie_playlist_id <- "1E8vQ9Bt4bRKWm0NTzSMt2"
 ```
 
-The ?get_playlist_information uses ?get_release_country
 
 ```{r}
-slovakia_indie_playlist_info <- get_playlist_information (slovakia_indie_playlist_id)
+data ("listen_local_artists")
+listen_local_artists %>%
+  dplyr::sample_n(12)
+
+
+slovak_artist_ids <- listen_local_artists %>%
+  filter ( national_identity == "sk") %>%
+  select ( spotify_artist_id ) %>%
+  distinct () %>% unlist()
+```
+
+The ?get_playlist_information uses ?get_release_country
+
+```{r get_playlist_information}
+slovakia_indie_playlist_info <- get_playlist_information(
+  slovakia_indie_playlist_id
+  )
 
 slovakia_indie_playlist_info$user_playlist_artists %>% head ()
 
 slovakia_indie_playlist_info$user_playlist_tracks  %>% head ()
+```
+```{r initial_recommendations}
+initial_recommendations(
+  playlist_information = slovakia_indie_playlist_info )
 ```
 

@@ -14,7 +14,8 @@ Imports:
     dplyr,
     magrittr,
     purrr,
-    tidyr
+    tidyr,
+    tidyselect
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
