@@ -1,12 +1,12 @@
 #' @title Get Playlist Information
 #
-# This is an example function named 'hello'
-# which prints 'Hello, world!'.
+#  Get unique tracks and unique artists from a playlist in a list.
 #
 #' @param playlist_id A single Spotify playlist id
 #' @importFrom purrr map_df possibly
 #' @importFrom spotifyr get_playlist_audio_features
 #' @importFrom dplyr count group_by arrange
+#' @return A list of unique tracks and unique artists from a playlist.
 #' @export
 
 get_playlist_information <- function( playlist_id ) {

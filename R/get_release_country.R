@@ -1,10 +1,10 @@
 #' @title Get Release Country
-#
-# This is an example function named 'hello'
-# which prints 'Hello, world!'.
-#
+#'
+#' Get the country codes of the release countries by ISRC code.
+#'
 #' @param isrc A vector of iscr codes
 #' @importFrom dplyr case_when
+#' @return A vector of ISO-3166 country codes.
 #' @export
 
 get_release_country <- function ( isrc ) {

@@ -9,6 +9,9 @@ get_playlist_information(playlist_id)
 \arguments{
 \item{playlist_id}{A single Spotify playlist id}
 }
+\value{
+A list of unique tracks and unique artists from a playlist.
+}
 \description{
 Get Playlist Information
 }
