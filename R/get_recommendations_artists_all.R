@@ -17,7 +17,6 @@
 #' @importFrom spotifyr get_recommendations
 #' @export
 
-
 get_recommendations_artists_all <- function (artist_ids) {
 
   get_recs <- function(i, ids, vec_length ) {

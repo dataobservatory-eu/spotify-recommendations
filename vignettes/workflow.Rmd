@@ -1,0 +1,37 @@
+---
+title: "Recommendation Workflow"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Recommendation Workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+if ( file.exists("not_included/daniel_env.R")) {
+  source ("not_included/daniel_env.R")
+} else {
+  source ("../not_included/daniel_env.R")
+}
+
+```
+
+```{r setup}
+library(spotifyrecommendations)
+slovakia_indie_playlist_id <- "1E8vQ9Bt4bRKWm0NTzSMt2"
+```
+
+The ?get_playlist_information uses ?get_release_country
+
+```{r}
+slovakia_indie_playlist_info <- get_playlist_information (slovakia_indie_playlist_id)
+
+slovakia_indie_playlist_info$user_playlist_artists %>% head ()
+
+slovakia_indie_playlist_info$user_playlist_tracks  %>% head ()
+```
+
