@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r setup-vignette, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -20,13 +20,13 @@ if ( file.exists("not_included/daniel_env.R")) {
 
 ```
 
-```{r setup}
+```{r startup}
 library(spotifyrecommendations)
 slovakia_indie_playlist_id <- "1E8vQ9Bt4bRKWm0NTzSMt2"
 ```
 
 
-```{r}
+```{r listen_local_artists}
 data ("listen_local_artists")
 listen_local_artists %>%
   dplyr::sample_n(12)
@@ -50,7 +50,4 @@ initial_slovak_indie <- initial_recommendations(
   target_ids = sk_artist_ids  )
 ```
 
-```{r}
-spotifyr::create_playlist()
-```
 

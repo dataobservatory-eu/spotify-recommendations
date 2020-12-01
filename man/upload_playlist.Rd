@@ -20,7 +20,7 @@ upload_playlist(
 \item{playlist_description}{New description for the playlist}
 }
 \value{
-A list of unique tracks and unique artists from a playlist.
+Does not return anything.
 }
 \description{
 Upload Playlist
