@@ -7,6 +7,7 @@
 #' @importFrom dplyr select filter distinct full_join left_join
 #' @importFrom dplyr slice_head group_by ungroup arrange
 #' @importFrom tibble tibble
+#' @importFrom spotifyr get_artists
 #' @return A tibble of artist IDs and genres in long form.
 #' @export
 
