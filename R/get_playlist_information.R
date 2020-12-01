@@ -16,7 +16,7 @@ get_playlist_information <- function( playlist_id ) {
   possibly_get_playlist <- purrr::possibly(
     .f = spotifyr::get_playlist, NULL)
 
-  user_playlist <-   possibly_get_playlist(playlist_id)
+  user_playlist <- possibly_get_playlist(playlist_id)
 
   if ( is.null(user_playlist) ) {
     warning ("Could not get playlist")
@@ -28,7 +28,10 @@ get_playlist_information <- function( playlist_id ) {
   user_playlist_features$release_country_code <- get_release_country(
     user_playlist_features$track.external_ids.isrc)
 
-  user_playlist_artists <- do.call ( rbind, user_playlist_features$track.album.artists)
+  user_playlist_features$
+
+  user_playlist_artists <- do.call ( rbind,
+                                     user_playlist_features$track.album.artists)
 
   unique_playlist_artists <-  user_playlist_artists  %>%
     group_by ( id ) %>%
