@@ -170,3 +170,12 @@ french_rock <- get_required_recommendations(
 )
 Sys.time()-start_time
 ```
+
+
+```{r}
+start_time <- Sys.time()
+french_rock <- get_required_recommendations(
+    user_playlist_id = "0qJTEzbjENk61TtYeqFxfq"
+)
+Sys.time()-start_time
+```

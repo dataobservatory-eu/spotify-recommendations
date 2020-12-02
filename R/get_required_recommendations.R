@@ -1,6 +1,17 @@
+#' @title Get Local Recommendations
+#'
+#' @param playlist_information A list received from get_playlist_information.
+#' @param target_nationality Defaults to \code{"sk"}
+#' @param target_release If recommendation should be limited to target,
+#' defaults to \code{NULL}
+#' @param limit Number of playlist items used for recommendation seed.
+#' @param n number of required target country recommendations
+#' @importFrom dplyr bind_rows ungroup filter select sample_n
+#' @importFrom tidyselect all_of
+#' @return A tibble of recommendations.
+#' @export
 
-
-get_required_recommendations <- function(
+get_local_recommendations <- function(
   user_playlist_id = "6KHw5aZWWsmRqpT7o290Mo",
   target_nationality = "sk",
   target_release  = NULL,

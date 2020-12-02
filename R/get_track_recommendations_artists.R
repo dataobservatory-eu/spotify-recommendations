@@ -1,3 +1,16 @@
+#' @title Get recommendations for an artist
+#'
+#' @param spotify_artist_id A vector of artist IDs
+#' @param target_nationality Defaults to \code{"sk"}
+#' @param target_release If recommendation should be limited to target,
+#' defaults to \code{NULL}
+#' @param n Number of recommended tracks needed.
+#' @importFrom dplyr bind_rows mutate filter select distinct
+#' @importFrom tidyselect all_of
+#' @importFrom purrr possibly
+#' @return A tibble of recommendations.
+#' @export
+
 get_track_recommendations_artist <- function ( spotify_artist_id,
                                                target_nationality = "sk",
                                                target_release = NULL,
