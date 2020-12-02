@@ -2,11 +2,11 @@
 
 export("%>%")
 export(get_artist_genre)
+export(get_artist_recommendations_genre)
 export(get_local_artist_recommendations)
 export(get_national_artist_ids)
 export(get_playlist_information)
 export(get_recommendations_artists_all)
-export(get_recommendations_genre)
 export(get_release_country)
 export(initial_recommendations)
 export(upload_playlist)

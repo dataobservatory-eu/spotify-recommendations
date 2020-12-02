@@ -39,5 +39,6 @@ vignettes/*.pdf
 .Renviron
 
 # not included files
-^not_included$
+^not_included
+not_included/
 inst/doc

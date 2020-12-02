@@ -11,8 +11,9 @@
 #' @return A tibble of artist IDs and genres in long form.
 #' @export
 
-
 get_artist_genre <- function( user_playlist_artists ) {
+
+  . <- n <-  NULL
 
   artist_info <- user_playlist_artists %>%
     arrange ( -n ) %>%
