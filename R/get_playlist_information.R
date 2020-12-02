@@ -28,8 +28,6 @@ get_playlist_information <- function( playlist_id ) {
   user_playlist_features$release_country_code <- get_release_country(
     user_playlist_features$track.external_ids.isrc)
 
-  user_playlist_features$
-
   user_playlist_artists <- do.call ( rbind,
                                      user_playlist_features$track.album.artists)
 

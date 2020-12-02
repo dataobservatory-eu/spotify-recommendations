@@ -17,6 +17,7 @@ upload_playlist <- function (user_id = 'rx4xjay1368opqg2i7nabuo5c',
   spotifyr::create_playlist(user_id,
                             name = playlist_name,
                             description = "Listen Local Test")
+
   user_playlists <- spotifyr::get_user_playlists(user_id = 'rx4xjay1368opqg2i7nabuo5c')
   target_playlist <- user_playlists %>%
     filter ( name == new_name,
