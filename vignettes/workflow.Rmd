@@ -148,7 +148,7 @@ recommendations_for_dutch_indie <- initial_dutch_indie %>%
 
 ```{r}
 start_time <- Sys.time()
-global_top_50 <- get_required_recommendations(
+global_top_50 <- get_local_recommendations(
   user_playlist_id = "1KNl4AYfgZtOVm9KHkhPTF"
 )
 Sys.time()-start_time
@@ -157,7 +157,7 @@ Sys.time()-start_time
 
 ```{r}
 start_time <- Sys.time()
-french_post_rock <- get_required_recommendations(
+french_post_rock <- get_local_recommendations(
   user_playlist_id = "66GxbkUX9OZikMgn338pz6"
 )
 Sys.time()-start_time
@@ -165,7 +165,7 @@ Sys.time()-start_time
 
 ```{r}
 start_time <- Sys.time()
-french_rock <- get_required_recommendations(
+french_rock <- get_local_recommendations(
     user_playlist_id = "6uL4zN0tryTmOsrhcknaIS"
 )
 Sys.time()-start_time
@@ -174,7 +174,7 @@ Sys.time()-start_time
 
 ```{r}
 start_time <- Sys.time()
-french_rock <- get_required_recommendations(
+french_rock <- get_local_recommendations(
     user_playlist_id = "0qJTEzbjENk61TtYeqFxfq"
 )
 Sys.time()-start_time
