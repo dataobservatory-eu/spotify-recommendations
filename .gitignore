@@ -37,3 +37,8 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# not included files
+^not_included
+not_included/
+inst/doc
