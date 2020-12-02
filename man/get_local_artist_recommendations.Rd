@@ -6,7 +6,7 @@
 
 Recommend local artists from user_playlist_artist data frame.}
 \usage{
-get_local_artist_recommendations(user_playlist_artists, n)
+get_local_artist_recommendations(user_playlist_artists, n = 5)
 }
 \arguments{
 \item{user_playlist_artists}{A user_playlist_artist data frame.}

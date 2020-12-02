@@ -10,8 +10,9 @@
 #' @return A character vector or artist IDs.
 #' @export
 
-get_artist_recommendations_genre <- function( artists_by_genre,
-                                       target_nationality = "sk" ) {
+get_artist_recommendations_genre <- function(
+      artists_by_genre,
+      target_nationality = "sk" ) {
 
   data ( "local_genre_table", envir=environment())
   data ( "listen_local_artists", envir=environment())

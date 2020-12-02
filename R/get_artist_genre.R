@@ -38,5 +38,5 @@ get_artist_genre <- function( user_playlist_artists ) {
       } else { tmp }
     }
   }
-  do.call(rbind, apply (artist_info, 1, get_artists_genre ) )
+  do.call(rbind, apply (artist_info, 1, get_genre ) )
 }

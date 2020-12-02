@@ -4,7 +4,11 @@
 \alias{initial_recommendations}
 \title{Get Initial Recommendations}
 \usage{
-initial_recommendations(playlist_information, target_ids = NA_character_)
+initial_recommendations(
+  playlist_information,
+  target_ids = NA_character_,
+  limit = 20
+)
 }
 \arguments{
 \item{playlist_information}{A list received from get_playlist_information.}

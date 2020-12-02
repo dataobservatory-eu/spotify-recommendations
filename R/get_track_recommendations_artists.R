@@ -1,23 +1,24 @@
 get_track_recommendations_artist <- function ( spotify_artist_id,
                                                target_nationality = "sk",
-                                               target_release = NULL) {
+                                               target_release = NULL,
+                                               n = 5) {
 
   data("listen_local_artists", envir=environment())
 
-  target_artists <- listen_local_artists %>%
-    filter ( target_nationality == target_nationality ) %>%
-    distinct ( spotify_artist_id ) %>% unlist() %>% as.character()
+  if ( !is.null(target_nationality) ) {
+    target_artists <- get_national_artist_ids ( target_nationality )
+    }
 
-  get_top_tracks <- function (id) {
-    top_tracks <- purrr::possibly(.f = get_artist_top_tracks, NULL)(id)
+  get_top_tracks <- function (artist_id) {
+    top_tracks <- purrr::possibly(.f = get_artist_top_tracks, NULL)(artist_id)
 
     fn_detect_artists <- function(x) {
       ifelse ( any (x %in% target_artists), TRUE, FALSE)
     }
 
-    if (is.null(top_tracks)) return(top_tracks)
+  if (is.null(top_tracks)) return(top_tracks)
 
-    if (!is.null(target_release)) {
+  if (!is.null(target_release)) {
       top_tracks <- top_tracks %>% mutate (
         release_country = get_release_country(external_ids.isrc)) %>%
         filter ( tolower(release_country) == tolower(target_release)) %>%
@@ -30,20 +31,27 @@ get_track_recommendations_artist <- function ( spotify_artist_id,
 
     if ( !is.null(top_tracks)) {
 
-      top_tracks$artists
-
       top_tracks %>%
-        dplyr::filter ( is_playable ) %>%
-        dplyr::select ( all_of(c("id", "name", "popularity",
+        mutate ( spotify_artist_id = artist_id ) %>%
+        #dplyr::filter ( is_playable ) %>%
+        dplyr::select ( all_of(c("spotify_artist_id", "id", "name", "popularity",
                                  "uri", "album.id", "album.name", "album.album_type",
                                  "external_ids.isrc")))
     }
 
   }
-  tmp <- lapply ( sample ( spotify_artist_id, 5 ), get_top_tracks)
+  tmp <- lapply ( sample ( spotify_artist_id, n ), get_top_tracks)
 
-  do.call ( rbind, tmp ) %>%
+  recommendations <- do.call ( rbind, tmp ) %>%
     distinct ( external_ids.isrc, .keep_all = TRUE ) %>%
-    filter ( )
+    mutate ( release_country_code = get_release_country(external_ids.isrc),
+             )
+
+  recommendations %>%
+      mutate (
+        target_artists = ifelse (is.null(target_nationality),
+                                     TRUE,
+                                     spotify_artist_id %in% get_national_artist_ids(target_nationlity))
+      )
 
 }

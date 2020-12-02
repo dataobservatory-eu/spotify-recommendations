@@ -14,9 +14,18 @@
 #' @return Returns n or less artist ids.
 #' @export
 
-get_local_artist_recommendations <- function( user_playlist_artists,
-                                   n ) {
+get_local_artist_recommendations <- function(
+                   user_playlist_artists,
+                   n = 5 ) {
   . <- id <- spotify_artist_id <- distance <- NULL
+
+  if ( "list" %in% class(user_playlist_artists) ) {
+    user_playlist_artists <- user_playlist_artists$user_playlist_artists
+  }
+
+  if ( ! 'data.frame' %in% class (user_playlist_artists) ) {
+    stop ("user_playlist_artists must be a data frame")
+  }
 
   data ( "artist_distances", envir=environment() )
 
@@ -35,8 +44,6 @@ get_local_artist_recommendations <- function( user_playlist_artists,
     sample_n (size = 1, replace = FALSE ) %>%
     arrange ( distance )
 
-  diverse_rec <- diverse_rec[1:3,]
-
   if ( nrow (diverse_rec) < n ) {
     further_rec <-  rec %>%
       anti_join ( diverse_rec,c("spotify_artist_id", "n",
@@ -51,9 +58,9 @@ get_local_artist_recommendations <- function( user_playlist_artists,
                   by = c("spotify_artist_id", "n",
                          "recommendation", "distance",
                          "national_identity")) %>%
-      select ( spotify_artist_id ) %>%
+      select ( recommendation ) %>%
       unlist () %>% as.character()
   } else {
-    diverse_rec$spotify_artist_id
+    diverse_rec$recommendation
   }
 }

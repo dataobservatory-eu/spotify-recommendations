@@ -9,9 +9,14 @@
 #' @export
 
 initial_recommendations <- function( playlist_information,
-                                     target_ids = NA_character_ ) {
+                                     target_ids = NA_character_,
+                                     limit = 20 ) {
 
   all_artists <- playlist_information$user_playlist_artists
+
+  if ( length(all_artists$id) > limit ) {
+    all_artists <- sample_n ( ungroup(all_artists), size = limit)
+  }
 
   recommendations_by_artists <- purrr::possibly(
     .f = get_recommendations_artists_all,
@@ -21,12 +26,21 @@ initial_recommendations <- function( playlist_information,
     warning ("No recommendation was made on the basis of original artists")
   }
 
+  if (length( playlist_information$user_playlist_tracks$track.id) > limit) {
+    user_track_ids <- sample_n(
+      ungroup( playlist_information$user_playlist_tracks), size = limit )
+  } else {
+    user_track_ids <-
+      ungroup( playlist_information$user_playlist_tracks)
+
+  }
+
   recommendations_by_tracks <- purrr::possibly(
     .f = spotifyr::get_recommendations_all,
     otherwise = NULL
   )(
     track_ids = unique (
-      playlist_information$user_playlist_tracks$track.id )
+      user_track_ids$track.id )
   )
 
   if ( !is.null(recommendations_by_artists)) {

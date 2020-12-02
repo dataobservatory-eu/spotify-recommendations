@@ -40,5 +40,6 @@ get_playlist_information <- function( playlist_id ) {
 
    list (
     user_playlist_tracks =  unique_playlist_tracks,
-    user_playlist_artists = unique_playlist_artists)
+    user_playlist_artists = unique_playlist_artists
+    )
 }
