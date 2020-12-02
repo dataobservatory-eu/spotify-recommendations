@@ -4,10 +4,12 @@
 \alias{get_recommendations_artists_all}
 \title{Get Recommendations For All Artists}
 \usage{
-get_recommendations_artists_all(artist_ids)
+get_recommendations_artists_all(artist_ids, authorization = NULL)
 }
 \arguments{
 \item{artist_ids}{Spotify Artist IDs}
+
+\item{authorization}{Authorization token}
 }
 \description{
 Get Recommendations For All Artists

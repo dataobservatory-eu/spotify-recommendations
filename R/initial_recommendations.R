@@ -10,17 +10,26 @@
 
 initial_recommendations <- function( playlist_information,
                                      target_ids = NA_character_,
-                                     limit = 20 ) {
+                                     limit = 20,
+                                     token = NULL ) {
 
+  if (is.null(token)) token <- get_spotify_access_token()
+
+  ### Artist based recommendations ------------------------------
   all_artists <- playlist_information$user_playlist_artists
 
   if ( length(all_artists$id) > limit ) {
-    all_artists <- sample_n ( ungroup(all_artists), size = limit)
+    all_artists <- sample_n ( ungroup(all_artists),
+                              size = limit)
   }
 
-  recommendations_by_artists <- purrr::possibly(
+  possible_recommendations_by_artists <- purrr::possibly(
     .f = get_recommendations_artists_all,
-    otherwise = NULL)(artist_ids = all_artists$id)
+    otherwise = NULL)
+
+  recommendations_by_artists <- possible_recommendations_by_artists (
+    artist_ids = all_artists$id,
+    authorization = token )
 
   if ( is.null(recommendations_by_artists)) {
     warning ("No recommendation was made on the basis of original artists")
@@ -35,12 +44,12 @@ initial_recommendations <- function( playlist_information,
 
   }
 
+  ### Track based recommendations -----------------------------------
   recommendations_by_tracks <- purrr::possibly(
     .f = spotifyr::get_recommendations_all,
     otherwise = NULL
   )(
-    track_ids = unique (
-      user_track_ids$track.id )
+    track_ids = unique (user_track_ids$track.id)
   )
 
   if ( !is.null(recommendations_by_artists)) {
@@ -76,6 +85,7 @@ initial_recommendations <- function( playlist_information,
     warning ("No recommendation was made on the basis of original tracks.")
   }
 
+  ## Combination of recommendations --------------------------------
   if ( !is.null(recommendations_by_tracks)) {
     if ( !is.null(recommendations_by_artists)){
        dplyr::bind_rows ( recommendations_by_artists,

@@ -6,12 +6,19 @@
 
 Recommend local artists from user_playlist_artist data frame.}
 \usage{
-get_local_artist_recommendations(user_playlist_artists, n = 5)
+get_local_artist_recommendations(
+  user_playlist_artists,
+  n = 5,
+  authorization = NULL
+)
 }
 \arguments{
 \item{user_playlist_artists}{A user_playlist_artist data frame.}
 
 \item{n}{Number of required recommendations (maximum value)}
+
+\item{authorization}{Defaults to \code{NULL} when
+\code{get_spotify_access_token()} is invoked.}
 }
 \value{
 Returns n or less artist ids.

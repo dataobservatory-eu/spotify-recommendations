@@ -9,7 +9,8 @@ get_local_recommendations(
   target_nationality = "sk",
   target_release = NULL,
   limit = 20,
-  n = 4
+  n = 4,
+  authorization = NULL
 )
 }
 \arguments{
@@ -21,6 +22,9 @@ defaults to \code{NULL}}
 \item{limit}{Number of playlist items used for recommendation seed.}
 
 \item{n}{number of required target country recommendations}
+
+\item{authorization}{Defaults to \code{NULL} when
+\code{get_spotify_access_token()} is invoked.}
 
 \item{playlist_information}{A list received from get_playlist_information.}
 }

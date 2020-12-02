@@ -5,16 +5,22 @@
 #' @param target_release If recommendation should be limited to target,
 #' defaults to \code{NULL}
 #' @param n Number of recommended tracks needed.
+#' @param authorization Defaults to \code{NULL} when
+#' \code{get_spotify_access_token()} is invoked.
 #' @importFrom dplyr bind_rows mutate filter select distinct
 #' @importFrom tidyselect all_of
 #' @importFrom purrr possibly
+#' @importFrom spotifyr get_spotify_access_token
 #' @return A tibble of recommendations.
 #' @export
 
 get_track_recommendations_artist <- function ( spotify_artist_id,
                                                target_nationality = "sk",
                                                target_release = NULL,
-                                               n = 5) {
+                                               n = 5,
+                                               authorization = NULL) {
+
+  if (is.null(token)) token <- get_spotify_access_token()
 
   data("listen_local_artists", envir=environment())
 
@@ -23,7 +29,9 @@ get_track_recommendations_artist <- function ( spotify_artist_id,
     }
 
   get_top_tracks <- function (artist_id) {
-    top_tracks <- purrr::possibly(.f = get_artist_top_tracks, NULL)(artist_id)
+    top_tracks <- purrr::possibly(
+      .f = get_artist_top_tracks, NULL)(artist_id,
+                                        authorization = token)
 
     fn_detect_artists <- function(x) {
       ifelse ( any (x %in% target_artists), TRUE, FALSE)

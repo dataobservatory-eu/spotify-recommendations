@@ -6,22 +6,36 @@
 #' defaults to \code{NULL}
 #' @param limit Number of playlist items used for recommendation seed.
 #' @param n number of required target country recommendations
+#' @param authorization Defaults to \code{NULL} when
+#' \code{get_spotify_access_token()} is invoked.
 #' @importFrom dplyr bind_rows ungroup filter select sample_n
 #' @importFrom tidyselect all_of
+#' @importFrom spotifyr get_spotify_access_token
 #' @return A tibble of recommendations.
 #' @export
 
 get_local_recommendations <- function(
   user_playlist_id = "6KHw5aZWWsmRqpT7o290Mo",
-  target_nationality = "sk",
-  target_release  = NULL,
+  target_country = "sk",
+  recommendation_type = "artists",
   limit = 20,
-  n = 4
-) {
+  n = 4,
+  authorization = NULL) {
 
   user_playlist_info <- get_playlist_information(
     playlist_id  = user_playlist_id
   )
+
+  if (recommendation_type == 'artists') {
+    target_nationality <- "sk"
+    target_release     <- NULL
+  } else if ( recommendation_type == "release") {
+    target_nationality <- NULL
+    target_release     <- "sk"
+  } else {
+    target_nationality <- "sk"
+    target_release     <- "sk"
+  }
 
   vars_to_select <- c( "id", "name", "popularity",
                        "uri", "external_ids.isrc",

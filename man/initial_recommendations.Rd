@@ -7,7 +7,8 @@
 initial_recommendations(
   playlist_information,
   target_ids = NA_character_,
-  limit = 20
+  limit = 20,
+  token = NULL
 )
 }
 \arguments{

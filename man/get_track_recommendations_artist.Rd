@@ -8,7 +8,8 @@ get_track_recommendations_artist(
   spotify_artist_id,
   target_nationality = "sk",
   target_release = NULL,
-  n = 5
+  n = 5,
+  authorization = NULL
 )
 }
 \arguments{
@@ -20,6 +21,9 @@ get_track_recommendations_artist(
 defaults to \code{NULL}}
 
 \item{n}{Number of recommended tracks needed.}
+
+\item{authorization}{Defaults to \code{NULL} when
+\code{get_spotify_access_token()} is invoked.}
 }
 \value{
 A tibble of recommendations.
